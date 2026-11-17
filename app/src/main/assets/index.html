@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#1c1c1f">
+<title>Calendário</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app" id="app">
+
+  <aside class="side" id="side">
+    <div class="side-top">
+      <button class="add" id="add" aria-label="Novo evento">+</button>
+    </div>
+    <div class="mini-head">
+      <h2 id="mini-title"></h2>
+      <div class="mini-nav">
+        <button id="mini-prev" aria-label="Mês anterior">‹</button>
+        <button id="mini-next" aria-label="Próximo mês">›</button>
+      </div>
+    </div>
+    <div class="mini-wd" id="mini-wd"></div>
+    <div class="mini-grid" id="mini-grid"></div>
+    <div class="agenda" id="agenda"></div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <section class="main">
+    <div class="toolbar">
+      <div class="tb-l">
+        <button class="menu" id="menu" aria-label="Abrir menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <div class="nav">
+          <button id="prev" aria-label="Anterior">‹</button>
+          <button id="today" class="t">Hoje</button>
+          <button id="next" aria-label="Próximo">›</button>
+        </div>
+        <div class="range" id="range"></div>
+      </div>
+      <div class="views" id="views">
+        <button data-view="day">Dia</button>
+        <button data-view="week">Semana</button>
+        <button data-view="month">Mês</button>
+        <button data-view="year">Ano</button>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input id="search" type="search" placeholder="Buscar" autocomplete="off">
+      </label>
+    </div>
+    <div class="view" id="view"></div>
+  </section>
+</div>
+
+<dialog id="dlg">
+  <form id="form" autocomplete="off">
+    <div class="dlg-head">
+      <h2 id="dlg-title">Novo evento</h2>
+      <button type="button" class="x" id="dlg-close" aria-label="Fechar">✕</button>
+    </div>
+    <label>Título
+      <input type="text" id="f-title" required maxlength="80" placeholder="Ex.: Reunião de design">
+    </label>
+    <label class="chk"><input type="checkbox" id="f-all"> Dia inteiro</label>
+    <div class="r3">
+      <label>Data <input type="date" id="f-date" required></label>
+      <label>Início <input type="time" id="f-start"></label>
+      <label>Fim <input type="time" id="f-end"></label>
+    </div>
+    <label>Cor
+      <div class="colors" id="f-colors"></div>
+    </label>
+    <label>Anotação
+      <textarea id="f-note" maxlength="500" rows="2"></textarea>
+    </label>
+    <div class="actions">
+      <button type="button" class="btn danger" id="f-del" hidden>Excluir</button>
+      <span class="sp"></span>
+      <button type="button" class="btn" id="f-cancel">Cancelar</button>
+      <button type="submit" class="btn primary">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
