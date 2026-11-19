@@ -7,6 +7,22 @@
 <meta name="theme-color" content="#1c1c1f">
 <title>Calendário</title>
 <link rel="stylesheet" href="style.css">
+<script>
+/* Calcula tamanhos sem clamp()/min()/max(), para funcionar em WebViews antigos. */
+(function () {
+  var r = document.documentElement;
+  function fit() {
+    var w = window.innerWidth || r.clientWidth, h = window.innerHeight || r.clientHeight;
+    var fs = Math.max(13, Math.min(18, w / 1599 * 16));
+    r.style.fontSize = fs + 'px';
+    r.style.setProperty('--hour', Math.max(2.75 * fs, Math.min(4.25 * fs, h * 0.08)) + 'px');
+    r.style.setProperty('--sidew', Math.max(14 * fs, Math.min(24 * fs, w * 0.215)) + 'px');
+  }
+  fit();
+  window.addEventListener('resize', fit);
+})();
+</script>
+
 </head>
 <body>
 <div class="app" id="app">
